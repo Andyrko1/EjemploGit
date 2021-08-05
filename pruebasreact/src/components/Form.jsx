@@ -15,28 +15,25 @@ const Form = () => {
         }
         setTodos([...todos,todo])
     }
+    const deleteTodo=indice=>{
     const newTodos = [...todos]
-    newTodos.splice(indice,1)
+    newTodos.splice(indice, 1)
     setTodos(newTodos)
-}
+    }
 return (
     <>
-{
     <form onSubmit={e=> e.preventDefault()}>
         <label>Agregar tarea</label><br />
         <input type="text" name="todo" onChange={handleChange}/>
         <button onClick={handleClick}>agregar</button>
         </form>
-        }
+        
         {
     todos.map((value,index) => (
-        <Todo todo={value.todo}/>
+        <Todo todo={value.todo} key={index} index={index} deleteTodo={deleteTodo}/>
         ))
     }
-
-
 </>
 )
-
+}
 export default Form
-//
