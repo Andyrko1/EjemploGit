@@ -8,7 +8,17 @@ const Form = () => {
         {todo: 'todo 3'}
     ])
     const handleChange = e => setTodo({[e.target.name]: e.target.value})
-    const handleClick = e => console.log('click click')
+    const handleClick = e => {
+        if(Object.keys(todo).length=== 0 || todo.todo.trim()===''){
+            alert('el campo no puede estar vacio')
+            return
+        }
+        setTodos([...todos,todo])
+    }
+    const newTodos = [...todos]
+    newTodos.splice(indice,1)
+    setTodos(newTodos)
+}
 return (
     <>
 {
@@ -17,13 +27,16 @@ return (
         <input type="text" name="todo" onChange={handleChange}/>
         <button onClick={handleClick}>agregar</button>
         </form>
+        }
         {
     todos.map((value,index) => (
         <Todo todo={value.todo}/>
         ))
     }
 
+
 </>
 )
-}
+
 export default Form
+//
